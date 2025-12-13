@@ -13,10 +13,6 @@ df = pd.read_csv(url)
 df.head()
 
 
-# ============================================
-# PART 1 — The “Simple” Model (Baseline)
-# ============================================
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -76,31 +72,6 @@ print("R² Test:", round(r2_test, 4))
 print("RMSE Test:", round(rmse_test, 4))
 print("MAE Test:", round(mae_test, 4))
 
-
-# ============================================
-# RESULTS
-# ============================================
-
-# Intercept: 2.9372
-# TV Coefficient: 0.0470
-# Radio Coefficient: 0.1766
-# Newspaper Coefficient: 0.0019
-
-# --- Training Set Performance ---
-# R² Train: 0.8850          
-# RMSE Train: 1.7897        
-# MAE Train: 1.3747        
-
-# --- Test Set Performance ---
-# R² Test: 0.9225           
-# RMSE Test: 1.3889         
-# MAE Test: 1.0548          
-
-
-
-# ============================================================
-# PART 2 — THE OVERLY COMPLEX MODEL (THE TRAP)
-# ============================================================
 
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.linear_model import LinearRegression
@@ -163,11 +134,6 @@ print(f"MAE Test: {mae_test_poly:.4f}")
 
 
 
-
-
-# ============================================
-# PART 3 — THE REGULARIZATION FIX (RIDGE & LASSO)
-# ============================================
 
 from sklearn.linear_model import Ridge, Lasso
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
@@ -264,4 +230,5 @@ nonzero_indices = np.where(lasso.coef_ != 0)[0]
 print("=== FEATURES LASSO KEPT ===")
 for i in nonzero_indices:
     print(feature_names[i], ":", lasso.coef_[i])
+
 
